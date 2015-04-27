@@ -1,0 +1,10 @@
+require:
+    - play
+    - projectModules -> datedfileappender 1.0.2
+
+repositories:
+    - projectModules:
+        type:       local
+        artifact:   "${application.path}/projectModules/[module]-[revision]/"
+        contains:
+            - projectModules -> *

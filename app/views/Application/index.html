@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+<div class="left-pane">
+    <form action="@{Services.createOslLink()}" method="get">
+        <input type="text" name="title">
+        <input type="hidden" name="userID" value="${tuanh.id}">
+        <input type="submit" value="Create Link">
+    </form>
+    #{if tuanh.linkList.size() == 0}
+        You haven't created any link. Create One!
+    #{/if}
+    #{else }
+        #{list items:tuanh.linkList, as:'link'}
+            <div class="link-item">
+                <a href="@{Application.index(link.id)}"><h3>${link.title}</h3></a>
+                <a href="/${link.oslLinkCode}"><span class="link-url">${link.oslLinkCode}</span></a>
+            </div>
+        #{/list}
+    #{/else}
+</div>
+<div class="right-pane">
+    #{if thisOslLink.linkMirrorList.size() == 0 || thisOslLink == null}
+        There isn't any created mirror link. Create one!
+    #{/if}
+    <form action="@{Services.updateMirrorLink()}" method="get">
+        <select name="os">
+            <option>iOS</option>
+            <option>Android</option>
+            <option>Windows Phone</option>
+        </select>
+        <input type="text" name="device" placeholder="Device. Eg: iphone 6, htc one ...">
+        <input type="text" name="mirrorLink">
+        <input type="hidden" name="oslLinkID" value="${thisOslLink.id}">
+        <input type="hidden" name="delete" value="false">
+        <input type="submit" value="Create Mirror Link">
+    </form>
+    #{else }
+        #{list items:thisOslLink.linkMirrorList, as:'mirrorLink'}
+            <div class="mirror-item">
+                <p>
+                    OS: ${mirrorLink.os}
+                </p>
+                <p>
+                    Device: ${mirrorLink.device}
+                </p>
+                <p>
+                    <a href="${mirrorLink.mirrorLink}">${mirrorLink.mirrorLink}</a>
+                </p>
+            </div>
+        #{/list}
+    #{/else}
+</div>

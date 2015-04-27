@@ -1,0 +1,14 @@
+.left-pane {
+    width: 50%;
+    float: left;
+}
+
+.right-pane {
+    width: 50%;
+    float: left;
+}
+
+.link-item {
+    border-bottom: 1px solid #dadada;
+    margin: 10px;
+}
