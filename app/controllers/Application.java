@@ -33,9 +33,9 @@ public class Application extends Controller {
     }
 
     public static void linkPage(String oslLinkCode) {
-//        OSL_Link oslLink = OSL_Link.find("oslLinkCode = ?", oslLinkCode).first();
+        OSL_Link oslLink = OSL_Link.find("oslLinkCode = ?", oslLinkCode).first();
 //        String link = Services.getMirrorLink("iOS", "", oslLinkCode);
-        render(oslLinkCode);
+        render(oslLink);
     }
 
 }

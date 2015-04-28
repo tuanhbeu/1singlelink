@@ -2,31 +2,42 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>${oslLink.title}</title>
     <script type="text/javascript">
+        var referrer =  document.referrer;
+        var browser = navigator.vendor;
+
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        var os = "iOS";
 
         if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) )
         {
-            window.location.replace("@{Services.getMirrorLink("iOS", "", oslLinkCode)}");
-
+            os = "iOS";
+           window.location.replace("@{Services.getMirrorLink("iOS", "", oslLink.oslLinkCode, referrer, browser)}");
         }
         else if( userAgent.match( /Android/i ) )
         {
-            window.location.replace("@{Services.getMirrorLink("Android", "", oslLinkCode)}");
+            os = "Android";
+           window.location.replace("@{Services.getMirrorLink("Android", "", oslLink.oslLinkCode, referrer, browser)}");
         }
 
         else if( userAgent.match( /Windows Phone/i ) )
         {
-            window.location.replace("@{Services.getMirrorLink("Windows Phone", "", oslLinkCode)}");
+           window.location.replace("@{Services.getMirrorLink("Windows Phone", "", oslLink.oslLinkCode, referrer, browser)}");
+            os = "Windows Phone";
         }
         else
         {
-            window.location.replace("http://higgsvalley.com/play-softwings-endorse-hillary-clinton.html");
+//            window.location.replace("http://higgsvalley.com/play-softwings-endorse-hillary-clinton.html");
+           window.location.replace("@{Services.getMirrorLink("iOS", "", oslLink.oslLinkCode, referrer, browser)}");
+         //  window.location.href = "/services/getMirrorLink?os="+ os + "&oslLinkCode=" + ${oslLinkCode} + "&referrer=" + referrer + "&browser=" + browser;
+            //window.location.replace("/services/getMirrorLink?os=iOS&device=&oslLinkCode=99Lalr&referrer=&browser=");
         }
+
     </script>
+
+    <link rel="image_src" href="https://slack-files.com/files-tmb/T0433PG81-F04JHPQAC-79fa2f3830/poster_720.png" />
 </head>
 <body>
-
 </body>
 </html>
