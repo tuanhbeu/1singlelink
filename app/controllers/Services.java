@@ -41,7 +41,7 @@ public class Services extends Controller {
     public static void getMirrorLink (String os, String device, String oslLinkCode, String referrer, String browser) {
         OSL_Link oslLink = OSL_Link.find("oslLinkCode = ?",oslLinkCode).first();
         oslLink.clickCount++;
-        OSL_Link_Mirror mirrorLink = OSL_Link_Mirror.find("oslLink_id = ? and os = ? or device = ?", oslLink.id, os, device).first();
+        OSL_Link_Mirror mirrorLink = OSL_Link_Mirror.find("oslLink_id = ? and (os = ? and device = ?)", oslLink.id, os, device).first();
 
         // tao click moi
         OSL_Link_Click newClick = new OSL_Link_Click();
@@ -58,7 +58,7 @@ public class Services extends Controller {
 
         oslLink.save();
         mirrorLink.save();
-
+        play.Logger.info("%s", mirrorLink.mirrorLink);
         redirect(mirrorLink.mirrorLink);
     }
 

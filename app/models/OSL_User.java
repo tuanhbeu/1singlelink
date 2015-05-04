@@ -19,7 +19,7 @@ public class OSL_User extends Model {
     public String email;
     public Date dateCreated;
 
-    @OneToMany
+    @OneToMany (mappedBy = "createdBy")
     public List<OSL_Link> linkList = new ArrayList<OSL_Link>();
 
 }

@@ -24,9 +24,9 @@ public class OSL_Link extends Model {
     @ManyToOne
     public OSL_User createdBy;
 
-    @OneToMany
+    @OneToMany (mappedBy = "oslLink")
     public List<OSL_Link_Mirror> linkMirrorList = new ArrayList<OSL_Link_Mirror>();
 
-    @OneToMany
+    @OneToMany (mappedBy = "oslLink")
     public List<OSL_Link_Click> linkClickList = new ArrayList<OSL_Link_Click>();
 }

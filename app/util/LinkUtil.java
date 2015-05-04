@@ -28,26 +28,28 @@ public class LinkUtil {
 
     public static boolean updateMirrorLink (String mirrorLink, String os, String device, String oslLinkID, boolean delete) {
         try {
+            // Check exist mirror link
             OSL_Link_Mirror oslLinkMirror = OSL_Link_Mirror.find("mirrorLink = ?", mirrorLink).first();
             OSL_Link oslLink = OSL_Link.findById(Long.valueOf(oslLinkID));
             if (delete) {
                 oslLinkMirror.delete();
+                return true;
             }
-            boolean mirrorLinkExist = true;
+//            boolean mirrorLinkExist = true;
             if (oslLinkMirror == null) {
                 oslLinkMirror = new OSL_Link_Mirror();
                 oslLinkMirror.oslLink = oslLink;
-                mirrorLinkExist = false;
+//                mirrorLinkExist = false;
             }
             oslLinkMirror.os = os;
             oslLinkMirror.device = device;
             oslLinkMirror.mirrorLink = mirrorLink;
             oslLinkMirror.save();
 
-            if (mirrorLinkExist) {
-                oslLink.linkMirrorList.add(oslLinkMirror);
-                oslLink.save();
-            }
+//            if (!mirrorLinkExist) {
+//                oslLink.linkMirrorList.add(oslLinkMirror);
+//                oslLink.save();
+//            }
 
             return true;
         } catch (Exception e) {

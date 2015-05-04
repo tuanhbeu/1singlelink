@@ -22,7 +22,7 @@ public class OSL_Link_Mirror extends Model {
     @ManyToOne
     public OSL_Link oslLink;
 
-    @OneToMany
+    @OneToMany (mappedBy = "oslLinkMirror")
     public List<OSL_Link_Click> linkClickList = new ArrayList<OSL_Link_Click>();
 
 }
